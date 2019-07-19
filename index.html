@@ -34,6 +34,7 @@
     <script src="js/index.js"></script>
     <script src="js/data.js"></script>
     <script src="js/expense.js"></script>
+    <script src="js/show_payments.js"></script>
     <div id="login_div" class="main-div">
         <h3>Firebase Web login Example</h3>
         <input type="email" placeholder="Email..." id="email" />
@@ -48,8 +49,12 @@
         <p id="user_para">Welcome to Firebase web login Example. You're currently logged in.</p>
         <div class="payments" id="payments">
             <div class="show_payments" id="show_payments">
-                <div id="">People who owe you money</div>
-                <div id="">Reople you need to pay</div>
+                <div id="borrowers" onload="borrowers();">People who owe you money
+                    <button onclick="borrowers()">Borrowers</button>
+                </div>
+                <div id="lenders" onload="lenders();">People you need to pay
+                    <button onclick="lenders()">Lenders</button>
+                </div>
             </div>
             <div class="make_payments" id="make_payments">
                 <div>Add expense
@@ -57,14 +62,14 @@
                     <input type="text" placeholder="How many people you want to add?..." id="people">
                     <button onclick="add_people()">Add people</button>
                     <div id="people_div"></div>
-                    <button onclick="add_expense();">Add expense</button>
+                    <button type="button" onclick="add_expense();">Add expense</button>
                 </div>
                 <div id>Make payment
                     <input placeholder="Add email" id="settle_email">
                     <input type="text" placeholder="Amount to be paid..." id="settle_amt">
                     <button onclick="clear_expense();">Settle Up</button>
                 </div>
-                <button onclick="logout()">Logout</button>
+                <button type="button" onclick="logout()">Logout</button>
             </div>
         </div>
     </div>
