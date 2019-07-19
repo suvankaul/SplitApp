@@ -16,7 +16,7 @@ function add_expense() {
     var email = document.getElementById("email").value;
     var people = document.getElementById("people").value;
     var amt = document.getElementById("amt").value;
-    var ind_amt = parseInt(amt) / people;
+    var ind_amt = parseInt(amt) / (parseInt(people) + 1);
     //console.log(people);
     var db = firebase.firestore();
     //var add_people = db.collection("users").doc(email).collection('borrowers');
@@ -53,33 +53,47 @@ function add_expense() {
 }
 
 function clear_expense() {
-    var user_email = document.getElementById("email").value;
+    var email = document.getElementById("email").value;
     var settle_email = document.getElementById("settle_email").value.toString();
     console.log(settle_email);
     var settle_amt = parseInt(document.getElementById("settle_amt").value);
+    console.log(settle_amt);
     var db = firebase.firestore();
     var user = db.collection("users").doc(email);
-    add_people.collection("borrower").doc(e).set({
-            amt: ind_amt
-        })
-        .then(function() {
-            alert("One record inserted");
-            console.log("Document successfully written!");
-            window.location.href = "index.html";
-        })
-        .catch(function(error) {
-            console.error("Error writing document: ", error);
-        });
-    var lenders = db.collection("users").doc(e);
-    lenders.collection("lender").doc(email).set({
-            amt: ind_amt
-        })
-        .then(function() {
-            alert("One record inserted");
-            console.log("Document successfully written!");
-            window.location.href = "index.html";
-        })
-        .catch(function(error) {
-            console.error("Error writing document: ", error);
-        });
+    // var borrowed_amt = user.collection("borrower").doc(settle_email).getValue("amt");
+    // console.log(borrowed_amt);
+    user.collection("borrower").doc(settle_email).get().then(function(myField) {
+        var borrowed_amt = myField.data().amt;
+        console.log(borrowed_amt);
+        var remaining_amt = borrowed_amt - settle_amt;
+        console.log(remaining_amt);
+
+        user.collection("borrower").doc(settle_email).set({
+                amt: remaining_amt
+            })
+            .then(function() {
+                alert("One record inserted");
+                console.log("Document successfully written!");
+                window.location.href = "index.html";
+            })
+            .catch(function(error) {
+                console.error("Error writing document: ", error);
+            });
+        var lenders = db.collection("users").doc(settle_email);
+        lenders.collection("lender").doc(email).set({
+                amt: remaining_amt
+            })
+            .then(function() {
+                alert("One record inserted");
+                console.log("Document successfully written!");
+                window.location.href = "index.html";
+            })
+            .catch(function(error) {
+                console.error("Error writing document: ", error);
+            });
+
+
+
+
+    });
 }
