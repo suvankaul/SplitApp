@@ -1,0 +1,52 @@
+<html>
+
+<head>
+    <title>Firebase Login</title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <!-- The core Firebase JS SDK is always required and cd must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#config-web-app -->
+
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-database.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAOnAewE8V6KoEYzCppdX01ZBlSOAm_F9U",
+            authDomain: "myfirstapp-ea.firebaseapp.com",
+            databaseURL: "https://myfirstapp-ea.firebaseio.com",
+            projectId: "myfirstapp-ea",
+            storageBucket: "",
+            messagingSenderId: "1039361546097",
+            appId: "1:1039361546097:web:718d0ac70a8b45fe"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src="js/index.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/expense.js"></script>
+    <div id="login_div" class="main-div">
+        <h3>Firebase Web Register Example</h3>
+        <input type="email" placeholder="Email..." id="email" />
+        <input type="password" placeholder="Password..." id="password" />
+        <input type="text" placeholder="Firstname..." id="first" />
+        <input type="text" placeholder="Lastname..." id="last" />
+        <input type="text" placeholder="Year of birth..." id="birth" />
+        <input type="text" placeholder="Mobile no..." id="mobile" />
+
+        <button onclick="register();addData();logout();">Register</button>
+    </div>
+    <div id="user_div" class="loggedin-div"></div>
+
+</body>
+
+</html>
