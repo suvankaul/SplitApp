@@ -59,32 +59,27 @@ function clear_expense() {
     var settle_amt = parseInt(document.getElementById("settle_amt").value);
     var db = firebase.firestore();
     var user = db.collection("users").doc(email);
-    
-    
-    
-        add_people.collection("borrower").doc(e).set({
-                amt: ind_amt
-            })
-            .then(function() {
-                alert("One record inserted");
-                console.log("Document successfully written!");
-                window.location.href = "index.html";
-            })
-            .catch(function(error) {
-                console.error("Error writing document: ", error);
-            });
-        var lenders = db.collection("users").doc(e);
-        lenders.collection("lender").doc(email).set({
-                amt: ind_amt
-            })
-            .then(function() {
-                alert("One record inserted");
-                console.log("Document successfully written!");
-                window.location.href = "index.html";
-            })
-            .catch(function(error) {
-                console.error("Error writing document: ", error);
-            });
-
-    
+    add_people.collection("borrower").doc(e).set({
+            amt: ind_amt
+        })
+        .then(function() {
+            alert("One record inserted");
+            console.log("Document successfully written!");
+            window.location.href = "index.html";
+        })
+        .catch(function(error) {
+            console.error("Error writing document: ", error);
+        });
+    var lenders = db.collection("users").doc(e);
+    lenders.collection("lender").doc(email).set({
+            amt: ind_amt
+        })
+        .then(function() {
+            alert("One record inserted");
+            console.log("Document successfully written!");
+            window.location.href = "index.html";
+        })
+        .catch(function(error) {
+            console.error("Error writing document: ", error);
+        });
 }

@@ -34,6 +34,7 @@
     <script src="js/index.js"></script>
     <script src="js/data.js"></script>
     <script src="js/expense.js"></script>
+    <script src="js/show_payments.js"></script>
     <div id="login_div" class="main-div">
         <h3>Firebase Web login Example</h3>
         <input type="email" placeholder="Email..." id="email" />
@@ -48,8 +49,12 @@
         <p id="user_para">Welcome to Firebase web login Example. You're currently logged in.</p>
         <div class="payments" id="payments">
             <div class="show_payments" id="show_payments">
-                <div id="">People who owe you money</div>
-                <div id="">Reople you need to pay</div>
+                <div id="borrowers" onload="borrowers();">People who owe you money
+                    <button onclick="borrowers()">Borrowers</button>
+                </div>
+                <div id="lenders" onload="lenders();">People you need to pay
+                    <button onclick="lenders()">Lenders</button>
+                </div>
             </div>
             <div class="make_payments" id="make_payments">
                 <div>Add expense
