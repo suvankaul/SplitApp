@@ -29,7 +29,7 @@ function add_expense() {
                 amt: ind_amt
             })
             .then(function() {
-                alert("One record inserted");
+                //alert("One record inserted");
                 console.log("Document successfully written!");
                 window.location.href = "index.html";
             })
@@ -43,7 +43,7 @@ function add_expense() {
             .then(function() {
                 alert("One record inserted");
                 console.log("Document successfully written!");
-                window.location.href = "index.html";
+                // window.location.href = "index.html";
             })
             .catch(function(error) {
                 console.error("Error writing document: ", error);
@@ -72,7 +72,7 @@ function clear_expense() {
                 amt: remaining_amt
             })
             .then(function() {
-                alert("One record inserted");
+                //alert("One record inserted");
                 console.log("Document successfully written!");
                 window.location.href = "index.html";
             })
@@ -84,9 +84,9 @@ function clear_expense() {
                 amt: remaining_amt
             })
             .then(function() {
-                alert("One record inserted");
+                //alert("One record inserted");
                 console.log("Document successfully written!");
-                window.location.href = "index.html";
+                //window.location.href = "index.html";
             })
             .catch(function(error) {
                 console.error("Error writing document: ", error);
