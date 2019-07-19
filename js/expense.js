@@ -17,6 +17,7 @@ function add_expense() {
     var people = document.getElementById("people").value;
     var amt = document.getElementById("amt").value;
     var ind_amt = parseInt(amt) / (parseInt(people) + 1);
+    var prev_bal, final_amt;
     //console.log(people);
     var db = firebase.firestore();
     //var add_people = db.collection("users").doc(email).collection('borrowers');
@@ -25,30 +26,41 @@ function add_expense() {
         var e = document.getElementById(i.toString()).value.toString();
         console.log(e);
         //console.log(e.value);
-        add_people.collection("borrower").doc(e).set({
-                amt: ind_amt
-            })
-            .then(function() {
-                //alert("One record inserted");
-                console.log("Document successfully written!");
-                window.location.href = "index.html";
-            })
-            .catch(function(error) {
-                console.error("Error writing document: ", error);
-            });
-        var lenders = db.collection("users").doc(e);
-        lenders.collection("lender").doc(email).set({
-                amt: ind_amt
-            })
-            .then(function() {
-                alert("One record inserted");
-                console.log("Document successfully written!");
-                // window.location.href = "index.html";
-            })
-            .catch(function(error) {
-                console.error("Error writing document: ", error);
-            });
 
+        add_people.collection("borrower").doc(e).get().then(function(queryField) {
+            console.log(queryField.data());
+            if (queryField.data() == undefined) {
+                console.log("Its working")
+                prev_bal = 0;
+            } else {
+                console.log(queryField.data());
+                prev_bal = queryField.data().amt;
+            }
+            final_amt = ind_amt + prev_bal;
+            add_people.collection("borrower").doc(e).set({
+                    amt: final_amt
+                })
+                .then(function() {
+                    alert("One record inserted");
+                    console.log("Document successfully written!");
+                    window.location.href = "index.html";
+                })
+                .catch(function(error) {
+                    console.error("Error writing document: ", error);
+                });
+            var lenders = db.collection("users").doc(e);
+            lenders.collection("lender").doc(email).set({
+                    amt: final_amt
+                })
+                .then(function() {
+                    alert("One record inserted");
+                    console.log("Document successfully written!");
+                    window.location.href = "index.html";
+                })
+                .catch(function(error) {
+                    console.error("Error writing document: ", error);
+                });
+        })
     }
 }
 
@@ -72,7 +84,7 @@ function clear_expense() {
                 amt: remaining_amt
             })
             .then(function() {
-                //alert("One record inserted");
+                alert("One record inserted");
                 console.log("Document successfully written!");
                 window.location.href = "index.html";
             })
@@ -84,9 +96,9 @@ function clear_expense() {
                 amt: remaining_amt
             })
             .then(function() {
-                //alert("One record inserted");
+                alert("One record inserted");
                 console.log("Document successfully written!");
-                //window.location.href = "index.html";
+                window.location.href = "index.html";
             })
             .catch(function(error) {
                 console.error("Error writing document: ", error);
