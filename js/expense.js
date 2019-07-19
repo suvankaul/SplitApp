@@ -43,7 +43,7 @@ function add_expense() {
             .then(function() {
                 alert("One record inserted");
                 console.log("Document successfully written!");
-                window.location.href = "index.html";
+                //window.location.href = "index.html";
             })
             .catch(function(error) {
                 console.error("Error writing document: ", error);
@@ -55,7 +55,7 @@ function add_expense() {
                 .then(function() {
                     alert("One record inserted");
                     console.log("Document successfully written!");
-                    window.location.href = "index.html";
+                    //window.location.href = "index.html";
                 })
                 .catch(function(error) {
                     console.error("Error writing document: ", error);
@@ -71,34 +71,34 @@ function clear_expense() {
     var settle_amt = parseInt(document.getElementById("settle_amt").value);
     console.log(settle_amt);
     var db = firebase.firestore();
-    var user = db.collection("users").doc(email);
+    var user = db.collection("users").doc(settle_email);
     // var borrowed_amt = user.collection("borrower").doc(settle_email).getValue("amt");
     // console.log(borrowed_amt);
-    user.collection("borrower").doc(settle_email).get().then(function(myField) {
+    user.collection("borrower").doc(email).get().then(function(myField) {
         var borrowed_amt = myField.data().amt;
         console.log(borrowed_amt);
         var remaining_amt = borrowed_amt - settle_amt;
         console.log(remaining_amt);
 
-        user.collection("borrower").doc(settle_email).set({
+        user.collection("borrower").doc(email).set({
             amt: remaining_amt
         })
         .then(function() {
             alert("One record inserted");
             console.log("Document successfully written!");
-            window.location.href = "index.html";
+            //window.location.href = "index.html";
         })
         .catch(function(error) {
             console.error("Error writing document: ", error);
         });
-        var lenders = db.collection("users").doc(settle_email);
-        lenders.collection("lender").doc(email).set({
+        var lenders = db.collection("users").doc(email);
+        lenders.collection("lender").doc(settle_email).set({
             amt: remaining_amt
         })
         .then(function() {
             alert("One record inserted");
             console.log("Document successfully written!");
-            window.location.href = "index.html";
+            //window.location.href = "index.html";
         })
         .catch(function(error) {
             console.error("Error writing document: ", error);
