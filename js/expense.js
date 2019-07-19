@@ -51,3 +51,40 @@ function add_expense() {
 
     }
 }
+
+function clear_expense() {
+    var user_email = document.getElementById("email").value;
+    var settle_email = document.getElementById("settle_email").value.toString();
+    console.log(settle_email);
+    var settle_amt = parseInt(document.getElementById("settle_amt").value);
+    var db = firebase.firestore();
+    var user = db.collection("users").doc(email);
+    
+    
+    
+        add_people.collection("borrower").doc(e).set({
+                amt: ind_amt
+            })
+            .then(function() {
+                alert("One record inserted");
+                console.log("Document successfully written!");
+                window.location.href = "index.html";
+            })
+            .catch(function(error) {
+                console.error("Error writing document: ", error);
+            });
+        var lenders = db.collection("users").doc(e);
+        lenders.collection("lender").doc(email).set({
+                amt: ind_amt
+            })
+            .then(function() {
+                alert("One record inserted");
+                console.log("Document successfully written!");
+                window.location.href = "index.html";
+            })
+            .catch(function(error) {
+                console.error("Error writing document: ", error);
+            });
+
+    
+}

@@ -59,7 +59,11 @@
                     <div id="people_div"></div>
                     <button onclick="add_expense();">Add expense</button>
                 </div>
-                <div id>Make payment</div>
+                <div id>Make payment
+                    <input placeholder="Add email" id="settle_email">
+                    <input type="text" placeholder="Amount to be paid..." id="settle_amt">
+                    <button onclick="clear_expense();">Settle Up</button>
+                </div>
                 <button onclick="logout()">Logout</button>
             </div>
         </div>
