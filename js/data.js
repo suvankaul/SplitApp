@@ -22,22 +22,22 @@ function addData() {
         .catch(function(error) {
             console.error("Error writing document: ", error);
         });
-    db.collection("admin").doc(email).set({
-            email: email,
-            first: first,
-            last: last,
-            birth: birth,
-            mobile: mobile,
-            type: "user"
-        })
-        .then(function() {
-            alert("One record inserted");
-            console.log("Document successfully written!");
-            window.location.href = "index.html";
-        })
-        .catch(function(error) {
-            console.error("Error writing document: ", error);
-        });
+    // db.collection("admin").doc(email).set({
+    //         email: email,
+    //         first: first,
+    //         last: last,
+    //         birth: birth,
+    //         mobile: mobile,
+    //         type: "user"
+    //     })
+    //     .then(function() {
+    //         alert("One record inserted");
+    //         console.log("Document successfully written!");
+    //         window.location.href = "index.html";
+    //     })
+    //     .catch(function(error) {
+    //         console.error("Error writing document: ", error);
+    //     });
     // db.collection("users").add({
     //         first: first,
     //         last: last,
