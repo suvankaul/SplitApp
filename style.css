@@ -20,12 +20,18 @@ input {
     width: 90%;
 }
 
-.main-div,
-.loggedin-div {
-    width: 80%;
+.main-div {
+    width: 40%;
     margin: 0px auto;
     margin-top: 50px;
     padding: 20px;
+    display: flex;
+}
+
+.loggedin-div {
+    width: 80%;
+    margin: 0px auto;
+    padding: 10px;
     display: none;
 }
 
@@ -82,7 +88,7 @@ input {
 }
 
 #make_payments,
-#show_payments {
+{
     margin: 10px;
 }
 
@@ -120,4 +126,12 @@ li a {
 li a:hover {
     background-color: #111;
     cursor: pointer;
+}
+
+#expense,
+#payment,
+#show_payments {
+    border: 1px solid white;
+    margin: 10px;
+    padding: 10px;
 }

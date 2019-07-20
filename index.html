@@ -54,7 +54,7 @@
         </div>
     </nav>
     <div id="login_div" class="main-div">
-        <h3>Login Here !!!</h3>
+        <h3 style="text-align: center">Login</h3>
         <input type="email" placeholder="Email..." id="email" />
         <input type="password" placeholder="Password..." id="password" />
 
@@ -66,7 +66,7 @@
         <h3>Welcome User</h3>
         <div class="payments" id="payments">
             <div class="show_payments" id="show_payments" style="flex-basis:50%; background-color: black">
-                Your Transactions !!
+                <center>Transactions</center>
                 <div>
                     <button onclick="borrowers()">People who owe you money</button>
                     <div id="borrowers" onload="borrowers();"></div>
@@ -77,16 +77,16 @@
                 </div>
             </div>
             <div class="make_payments" id="make_payments" style="flex-basis:50%; background-color: black">
-                <div>
-                    <div>Add expense</div>
+                <div class="expense" id="expense">
+                    <div style="text-align: center">Add expense</div>
                     <input type="text" placeholder="Amount to be splitted..." id="amt">
                     <input type="text" placeholder="How many people you want to add?..." id="people">
-                    <button onclick="add_people()">Add people</button>
+                    <button onclick="add_people()" style="background: #9da2b0">Add people</button>
                     <div id="people_div"></div>
                     <button type="button" onclick="add_expense();">Add expense</button>
                 </div>
-                <div>
-                    <div>Make payment</div>
+                <div class="payment" id="payment">
+                    <div style="text-align: center">Make payment</div>
                     <input placeholder="Add email" id="settle_email">
                     <input type="text" placeholder="Amount to be paid..." id="settle_amt">
                     <button onclick="clear_expense();">Settle Up</button>
