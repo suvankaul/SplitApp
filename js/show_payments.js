@@ -11,8 +11,8 @@ function borrowers() {
                 if (data != 0) {
                     console.log(data);
                     var para = document.createElement("p");
-
-                    data_text = "User: " + doc.id + " and Amount is: " + data.toString();
+                    var my_amount = Number(data).toFixed(2);;
+                    data_text = "User: " + doc.id + " and Amount is: " + my_amount.toString();
                     var para_text = document.createTextNode(data_text)
                     para.appendChild(para_text);
                     document.getElementById("borrowers").appendChild(para);
