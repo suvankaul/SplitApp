@@ -1,4 +1,5 @@
 function add_people() {
+    console.log(firebase.auth().currentUser.email);
     var people = document.getElementById("people").value;
     var p = parseInt(people);
     var element = document.getElementById("people_div");
@@ -21,7 +22,7 @@ function add_expense() {
     //console.log(people);
     var db = firebase.firestore();
     //var add_people = db.collection("users").doc(email).collection('borrowers');
-    var add_people = db.collection("users").doc(email);
+    var add_people = db.collection("users").doc(firebase.auth().currentUser.email);
     for (var i = 1; i <= people; i++) {
         var e = document.getElementById(i.toString()).value.toString();
         console.log(e);
@@ -49,7 +50,7 @@ function add_expense() {
                     console.error("Error writing document: ", error);
                 });
             var lenders = db.collection("users").doc(e);
-            lenders.collection("lender").doc(email).set({
+            lenders.collection("lender").doc(firebase.auth().currentUser.email).set({
                     amt: final_amt
                 })
                 .then(function() {
@@ -78,16 +79,14 @@ function clear_expense() {
         var borrowed_amt = myField.data().amt;
         var remaining_amt;
         console.log(borrowed_amt);
-        if(borrowed_amt == 0){
-            alert("You do not owe "+ settle_email + " anything for now. Returing "+ settle_amt+" back to you.");
-        }
-        else{
-            if(settle_amt>borrowed_amt){
+        if (borrowed_amt == 0) {
+            alert("You do not owe " + settle_email + " anything for now. Returing " + settle_amt + " back to you.");
+        } else {
+            if (settle_amt > borrowed_amt) {
                 remaining_amt = 0;
                 var return_amt = settle_amt - borrowed_amt;
-                alert("You owed only " + borrowed_amt + " to " + settle_email + ". Returning amount back "+ return_amt + " to you.");
-            }
-            else{
+                alert("You owed only " + borrowed_amt + " to " + settle_email + ". Returning amount back " + return_amt + " to you.");
+            } else {
                 remaining_amt = borrowed_amt - settle_amt;
             }
             console.log(remaining_amt);

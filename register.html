@@ -35,8 +35,24 @@
     <script src="js/data.js"></script>
     <script src="js/expense.js"></script>
     <script src="js/show_payments.js"></script>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <ul>
+                    <li><a class="navbar-brand" href="#">MySplit</a></li>
+                    <li>
+                        <p id="user_para"></p>
+                    </li>
+                    <li style="float:right"><a href="index.html">Login</a></li>
+                    <li style="float:right"><a href="register.html">Register</a></li>
+                    <li style="float:right"><button type="button" class="logout" id="logout" onclick="logout()">Logout</button></li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
     <div id="login_div" class="main-div">
-        <h3>Firebase Web Register Example</h3>
+        <h3>MySplit Register</h3>
         <input type="email" placeholder="Email..." id="email" />
         <input type="password" placeholder="Password..." id="password" />
         <input type="text" placeholder="Firstname..." id="first" />

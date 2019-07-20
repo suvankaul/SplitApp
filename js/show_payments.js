@@ -2,7 +2,7 @@ function borrowers() {
     var email = document.getElementById("email").value;
     var db = firebase.firestore();
     document.getElementById("borrowers").innerHTML = "";
-    db.collection("users").doc(email).collection("borrower")
+    db.collection("users").doc(firebase.auth().currentUser.email).collection("borrower")
         .get()
         .then(function(querySnapshot) {
             console.log('In function');
@@ -12,7 +12,7 @@ function borrowers() {
                     console.log(data);
                     var para = document.createElement("p");
 
-                    data_text = doc.id + " " + data.toString();
+                    data_text = "User: " + doc.id + " and Amount is: " + data.toString();
                     var para_text = document.createTextNode(data_text)
                     para.appendChild(para_text);
                     document.getElementById("borrowers").appendChild(para);
@@ -28,7 +28,7 @@ function lenders() {
     var email = document.getElementById("email").value;
     var db = firebase.firestore();
     document.getElementById("lenders").innerHTML = "";
-    db.collection("users").doc(email).collection("lender")
+    db.collection("users").doc(firebase.auth().currentUser.email).collection("lender")
         .get()
         .then(function(querySnapshot) {
             console.log('In function');
@@ -37,7 +37,7 @@ function lenders() {
                 if (data != 0) {
                     console.log(data);
                     var para = document.createElement("p");
-                    var data_text = doc.id + " " + data.toString();
+                    var data_text = "User: " + doc.id + " and Amount is: " + data.toString();
                     var para_text = document.createTextNode(data_text)
                     para.appendChild(para_text);
                     document.getElementById("lenders").appendChild(para);

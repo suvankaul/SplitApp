@@ -4,7 +4,11 @@ firebase.auth().onAuthStateChanged(function(user) {
 
         document.getElementById("user_div").style.display = "block";
         document.getElementById("login_div").style.display = "none";
+        document.getElementById("logout").style.display = "block";
         //document.getElementById("response").style.display = "none";
+        document.getElementById("user_para").style.display = "block";
+        document.getElementById("login_button").style.display = "none";
+        document.getElementById("register_button").style.display = "none";
 
         var user = firebase.auth().currentUser;
         console.log(user);
@@ -17,10 +21,12 @@ firebase.auth().onAuthStateChanged(function(user) {
 
     } else {
         // No user is signed in.
-
-        document.getElementById("user_div").style.display = "none";
         document.getElementById("login_div").style.display = "block";
-
+        document.getElementById("logout").style.display = "none";
+        document.getElementById("login_button").style.display = "block";
+        document.getElementById("register_button").style.display = "block";
+        document.getElementById("user_div").style.display = "none";
+        document.getElementById("user_para").style.display = "none";
     }
 });
 
