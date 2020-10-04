@@ -21,15 +21,10 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script>
         // Your web app's Firebase configuration
-        var firebaseConfig = {
-            apiKey: "AIzaSyAOnAewE8V6KoEYzCppdX01ZBlSOAm_F9U",
-            authDomain: "myfirstapp-ea.firebaseapp.com",
-            databaseURL: "https://myfirstapp-ea.firebaseio.com",
-            projectId: "myfirstapp-ea",
-            storageBucket: "",
-            messagingSenderId: "1039361546097",
-            appId: "1:1039361546097:web:718d0ac70a8b45fe"
-        };
+        import {
+            firebaseConfigObg
+        } from './firebase-credentials';
+        var firebaseConfig = firebaseConfigObg;
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
     </script>
